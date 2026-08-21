@@ -50,9 +50,15 @@ Write it when:
 Substantive means a bug fixed, a feature built, a migration, a refactor with a
 goal. Not: answering a question, reading code, a one-line tweak.
 
-**One exception.** Work that is genuinely blocked and stays that way gets a ticket
-while still open — otherwise nothing records that it is outstanding. Its Status
-line says what it is blocked on and in whose hands it sits.
+**Development only.** A ticket records a change to this codebase. Deployment,
+container configuration, cron entries, infrastructure and anything else living in
+another repository do not get tickets here, however much they matter — raise them
+in conversation and let Aniki route them.
+
+**One exception.** Development work that is genuinely blocked, and stays that way,
+gets a ticket while still open — otherwise nothing records that it is outstanding.
+Its Status line says what it is blocked on. Blocked on something outside the
+codebase is not this case; there is no development work to record.
 
 Don't ask permission to write one once work is done. Write it, mention it in one
 line, move on.
