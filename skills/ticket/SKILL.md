@@ -61,13 +61,28 @@ Use `templates/ticket.md`, unless the project's own tickets say otherwise.
   true when the work is done: "A group whose members disagree on price publishes
   no benchmark." Not checkboxes — a checkbox describes work in progress; a
   ticket outlives that.
+- **Changes** — file path and, per file, what changed and why. Fill it in AS THE
+  EDITS HAPPEN, from the edits actually made — never reconstructed at the end,
+  which is how paths go stale and reasons get invented.
+
+  This is a staging area for the commit, not a history of it. Its job is to
+  carry the *why* from the moment the edit was made to the moment it reaches
+  Bitbucket, which is the one thing `git log --stat` cannot supply in advance —
+  git knows what changed, only the ticket knows why. So write each line as the
+  sentence you would want in the commit body:
+
+  | File | Change |
+  |---|---|
+  | `app/Actions/RecalculateGroupPriceBenchmarksAction.php` | Withhold a group's benchmark when a quarter of its members disagree on price; blame no member when all of them do |
+  | `database/migrations/..._repair_orphaned_uncommon_reasons.php` | Repair rows where the exclusion flag and its reason disagreed — two populations, opposite fixes |
+
+  Once committed, the commit is the record and this section has done its job.
+  Do not groom it afterwards to match `git log`; leave it as written.
+
 - **Notes** — only when there is something a reader would otherwise redo: an
   alternative measured and rejected, a decision whose reason is not obvious, an
   open question now answered. Omit the heading entirely if there is nothing.
   Link ADRs as `[[adr-slug]]`.
-
-**No changed-files table.** Git already lists the files, more accurately and
-without going stale. A table written by hand is a worse copy of `git log --stat`.
 
 ## Register — plain business English
 
@@ -78,7 +93,10 @@ makes a ticket still readable in six months, when column names have moved.
   "overstated by 37,908".
 - Name things as the business does: "a listing", "a price group", "the acceptable
   ceiling" — not `raw_products`, `price_signature_id`, `group_max_acceptable_price`.
-- No file paths, no class names, no commit hashes, no SQL.
+- No file paths, no class names, no commit hashes, no SQL — **except in
+  `## Changes`**, which is addressed to whoever writes the commit, not to a
+  future reader of the ticket. Paths and class names belong there and nowhere
+  else.
 - Describe consequences, not implementations: "the export produced blank price
   columns across the whole file" beats "a column-constrained eager load defeated
   the accessor".
@@ -101,6 +119,9 @@ paragraphs of problem, one user story, five or six criteria.
   they are one criterion.
 - No section that restates another. If Notes repeats the problem statement, delete
   it.
+- `## Changes` is exempt from the one-screen target. It is a working list, and an
+  incomplete one costs a commit message later — one line per file touched, however
+  many that is.
 
 When a piece of work will not fit that shape, it is more than one ticket. Split it
 by who fixes what, not by how much was typed.

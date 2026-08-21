@@ -16,6 +16,11 @@ As a [role], I need [capability] so that [outcome].
 - [End state, observable, true when the work is done.]
 - [Another. One per outcome — merge any two that are always true together.]
 
+## Changes
+| File | Change |
+|---|---|
+| `path/to/file.php` | [What changed and why — written as the sentence you want in the commit body] |
+
 ## Notes
 [Only if there is something a reader would otherwise redo: an alternative measured
 and rejected, a non-obvious decision, an open question now answered. Delete this
