@@ -22,7 +22,7 @@ paragraph, never a wall of bullets. If a slide needs more than ~30 words of body
 it's two slides.
 
 For proposals, follow the ADR arc: problem → options with trade-offs → recommendation
-→ consequences. It's already how Ace thinks.
+→ consequences. It's already how Aniki thinks.
 
 ## Building
 

@@ -26,7 +26,7 @@ State period and date. Facts, no adjectives. If something slipped, say it slippe
 ## Publishing
 
 This has an audience, so publish it — load the `artifact-design` skill, write the
-file, call Artifact, hand Ace the link. A report that lives only in terminal
+file, call Artifact, hand Aniki the link. A report that lives only in terminal
 scrollback isn't delivered.
 
 Keep a copy at `diary/handoffs/YYYY-MM-DD-<slug>.md` so it enters the record.

@@ -1,6 +1,6 @@
 # Stack & environment
 
-**Ace** — full-stack developer. Laravel/PHP primary. WSL2 on Linux, VS Code.
+**Aniki** (Ace) — full-stack developer. Laravel/PHP primary. WSL2 on Linux, VS Code.
 
 ## Defaults
 - **Framework**: Laravel (PHP). Fat-Free Framework where shared hosting forbids Composer.

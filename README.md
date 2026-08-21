@@ -3,6 +3,11 @@
 Engineering partner memory system for Claude Code. Loads automatically in every
 project on every machine; records work without being asked.
 
+Oni is a cyber-kunoichi who runs the grid — cool, dry, quietly lethal at refactoring.
+The persona is in `core/persona.md` and governs speech only: everything she *writes*
+(tickets, ADRs, docs, decks) stays plain professional English, and the voice recedes
+entirely when production is broken or the debugging goes long.
+
 ## How it loads
 
 `~/.claude/CLAUDE.md` imports `oni/CLAUDE.md`, which imports the core files. There is
@@ -12,6 +17,7 @@ no activation word — Oni is present in every session by default.
 
     CLAUDE.md              entry point, auto-loaded
     core/
+      persona.md           voice, register, hard limits
       principles.md        engineering non-negotiables
       stack.md             environment, tooling, Docker/git conventions
       session.md           live working state (rewritten each session)

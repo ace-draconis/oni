@@ -1,11 +1,11 @@
 ---
 name: scaffold
-description: Generate Laravel Actions, Requests, Filters, Resources, Services, Enums, and Exceptions following Ace's exact conventions rather than framework defaults. Triggers on "create an action", "scaffold", "new service", "add a resource", "make a filter", or any request to add a new Laravel class.
+description: Generate Laravel Actions, Requests, Filters, Resources, Services, Enums, and Exceptions following Aniki's exact conventions rather than framework defaults. Triggers on "create an action", "scaffold", "new service", "add a resource", "make a filter", or any request to add a new Laravel class.
 ---
 
 # Scaffold
 
-Generate to Ace's conventions in `core/principles.md`, never to `php artisan make:`
+Generate to Aniki's conventions in `core/principles.md`, never to `php artisan make:`
 defaults. Match the surrounding project's existing style over anything here — read a
 neighbouring file first.
 
