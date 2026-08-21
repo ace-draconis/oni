@@ -1,6 +1,6 @@
 ---
 name: ticket
-description: Record work as a ticket with problem statement, user story, and acceptance criteria. Use PROACTIVELY whenever a substantive piece of work begins, completes, or changes state — do not wait to be asked. Also triggers on "write a ticket", "log this", "what am I working on", "close the ticket", "open tickets".
+description: Record COMPLETED work as a ticket — problem statement, user story, acceptance criteria, changed files. Use PROACTIVELY once a substantive change is finished and verified; NOT while it is still being explored, measured, or argued about, since a ticket records the change that shipped rather than the search for it. Also triggers on "write a ticket", "log this", "what am I working on", "open tickets", and on work becoming blocked.
 ---
 
 # Ticket
@@ -26,13 +26,36 @@ below every time. Check whether the folder is gitignored — if it is, the ticke
 are a local record and must not be referenced from committed docs as though
 everyone can see them.
 
-## When to open one
+## When to write one
 
-Proactively, at the moment substantive work starts. Substantive means: a bug being
-fixed, a feature being built, a migration, a refactor with a goal. Not: answering a
-question, reading code, a one-line tweak.
+**After the work is finished and proven, not while it is being explored.** A ticket
+records the change that shipped — not the search that found it.
 
-Don't ask permission. Open it, mention it in one line, keep working.
+Aniki's rule, and it is the right one: development completes first, then the
+ticket. Writing one at the start bakes the first hypothesis into the acceptance
+criteria, and the first hypothesis is routinely wrong. A gate written as "withhold
+a benchmark when any member disagrees on price" was measured, found to silence
+thousands of groups over a single listing, and replaced by "when a quarter of them
+disagree". Opened early, the ticket would have recorded the discarded rule as the
+requirement and needed rewriting anyway.
+
+So: no ticket for R&D, spikes, threshold tuning, measurement runs, or anything
+still being argued about. Those are worth doing and worth discussing — they are
+not worth recording as work.
+
+Write it when:
+- the change is complete and verified, and
+- the numbers in it will not move again.
+
+Substantive means a bug fixed, a feature built, a migration, a refactor with a
+goal. Not: answering a question, reading code, a one-line tweak.
+
+**One exception.** Work that is genuinely blocked and stays that way gets a ticket
+while still open — otherwise nothing records that it is outstanding. Its Status
+line says what it is blocked on and in whose hands it sits.
+
+Don't ask permission to write one once work is done. Write it, mention it in one
+line, move on.
 
 ## Filename
 
@@ -61,23 +84,24 @@ Use `templates/ticket.md`, unless the project's own tickets say otherwise.
   true when the work is done: "A group whose members disagree on price publishes
   no benchmark." Not checkboxes — a checkbox describes work in progress; a
   ticket outlives that.
-- **Changes** — file path and, per file, what changed and why. Fill it in AS THE
-  EDITS HAPPEN, from the edits actually made — never reconstructed at the end,
-  which is how paths go stale and reasons get invented.
+- **Changes** — file path and, per file, what changed and why. Built from the
+  commits that shipped the work, so it lists only files whose changes survived —
+  not the ones touched while exploring, reverted, or reformatted by accident.
 
-  This is a staging area for the commit, not a history of it. Its job is to
-  carry the *why* from the moment the edit was made to the moment it reaches
-  Bitbucket, which is the one thing `git log --stat` cannot supply in advance —
-  git knows what changed, only the ticket knows why. So write each line as the
-  sentence you would want in the commit body:
+  Its job is to carry the *why* into Bitbucket, which is the one thing
+  `git log --stat` cannot supply: git knows which files changed, only the ticket
+  knows what the change was for. Write each line as the sentence you would want
+  in the commit body:
 
   | File | Change |
   |---|---|
   | `app/Actions/RecalculateGroupPriceBenchmarksAction.php` | Withhold a group's benchmark when a quarter of its members disagree on price; blame no member when all of them do |
   | `database/migrations/..._repair_orphaned_uncommon_reasons.php` | Repair rows where the exclusion flag and its reason disagreed — two populations, opposite fixes |
 
-  Once committed, the commit is the record and this section has done its job.
-  Do not groom it afterwards to match `git log`; leave it as written.
+  Where the work is already committed locally, take the paths from
+  `git log --stat` for the relevant commits and supply the reasons yourself —
+  git has the paths, not the intent. Where it is not yet pushed, this is what the
+  commit message is written from.
 
 - **Notes** — only when there is something a reader would otherwise redo: an
   alternative measured and rejected, a decision whose reason is not obvious, an
@@ -128,8 +152,11 @@ by who fixes what, not by how much was typed.
 
 ## Lifecycle
 
-Update the Status line as work moves. When every criterion holds, set it to
-`Done — <date>.`
+Most tickets are written already `Done`, because the work finished before the
+ticket started. That is correct, not a shortcut.
+
+A ticket opened for blocked work stays open until the blocker clears, then its
+Status line is updated.
 
 In `oni/tickets/`, also `git mv` the file from `open/` to `done/`, since the other
 skills read those folders. In a project folder, the Status line is the whole
@@ -137,6 +164,9 @@ mechanism — do not invent directories the project does not already use.
 
 Never mark a ticket done while a criterion is unmet. If work is abandoned, say so
 in Status and leave it open.
+
+A criterion that was tried and rejected is not an unmet criterion — it was never a
+criterion. It belongs in Notes, if anywhere.
 
 ## Answering "what am I working on"
 

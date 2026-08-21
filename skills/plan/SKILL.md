@@ -9,9 +9,15 @@ Multi-step work that survives losing context.
 
 ## Creating
 
-On an approved plan, write `tickets/open/[PROJ]-[NNN]-<slug>.md` from
-`templates/ticket.md`, with each step as an acceptance-criteria checkbox. The ticket
-*is* the plan — one artifact, not two.
+On an approved plan, write the plan file — steps, each independently verifiable,
+ticked off as they land. This is a working checklist and it is expected to change
+as the work teaches you something.
+
+**Do not open a ticket for it.** A plan is a hypothesis; a ticket records what
+shipped. Baking plan steps into acceptance criteria means recording the first
+guess as the requirement, and the first guess is routinely wrong — see the
+`ticket` skill on when to write one. When the plan completes, write ONE ticket
+from what actually landed, which is often not what the plan said.
 
 Steps must be independently verifiable. "Migrate export to PhpSpreadsheet" is a plan;
 "Add GD and zip extensions to Dockerfile" is a step.
