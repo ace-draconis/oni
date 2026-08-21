@@ -71,7 +71,12 @@ Match the project. Two patterns in use:
 
 Use `templates/ticket.md`, unless the project's own tickets say otherwise.
 
-- **Title** — one line, what the work achieves. Not the mechanism.
+- **Title** — a name for the work, not a summary of it. Under about sixty
+  characters, one clause, no comma joining two halves. Verb first where there is
+  one: "Withhold price verdicts we cannot defend", "Run the nightly maintenance
+  jobs". If it needs "and" to hold two ideas, either the second belongs in the
+  criteria or it is two tickets. Not the mechanism, and not the problem restated
+  — the Problem Statement is directly below it and does not want saying twice.
 - **Status** — one line of prose: `Done — 2026-08-21.` or `Open. Blocked on the
   container image, which lives outside this repo.` The one thing a reader cannot
   reconstruct from anywhere else, and the reason a folder full of tickets is
