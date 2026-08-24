@@ -91,6 +91,10 @@ That rules out most of what is tempting to write:
 - **Never narrate the fault as a story about wrong naming, wrong display, or
   inaccurate figures.** State what the business could not do as a result.
 - **Never say "we changed X to Y".** Say what becomes possible.
+- **Never present the diagnosis.** No counts of affected rows, no named products or
+  groups, no sampled cases, no before-and-after measurements. Those prove the
+  problem was real; they do not explain what the business needed. State the
+  principle and let the commit carry the proof.
 
 Write instead about:
 
@@ -176,9 +180,25 @@ Use `templates/ticket.md`, unless the project's own tickets say otherwise.
 Write it so someone who has never read the schema understands it. This is what
 makes a ticket still readable in six months, when column names have moved.
 
-- Round and spell out numbers: "overstated by nearly forty thousand", not
-  "overstated by 37,908". Prefer a proportion where it is what matters — "roughly
-  half the catalogue" lands where "ninety thousand listings" does not.
+- **State the principle, not the evidence.** The ticket says what must be true and
+  why it matters. It does not prove it. Measurements, counts, sampled products,
+  named groups and worked examples are how the problem was diagnosed — they belong
+  in the commit, in code comments, and in `## Notes` only where a reader would
+  otherwise repeat rejected work.
+
+  Before: "Nearly sixty thousand groups were wide enough for this to bite, and in
+  one soft-drink family four prices from three marketplaces covering a
+  seven-ringgit range were marked down purely by position, the two ends missing
+  agreement with each other by six sen."
+  After: "Genuine market prices were being discarded for disagreeing with each
+  other when they were all reasonable, so benchmarks rested on less evidence than
+  we had actually collected."
+
+- Use a figure only where the figure IS the objective — a target, a limit, a
+  service level. "A full refresh completes within the hour" is an objective. "This
+  affected sixty thousand groups" is evidence.
+- Where a figure is genuinely needed, prefer a proportion: "roughly half the
+  catalogue" lands where "ninety thousand listings" does not.
 - Name things as the business does: "a listing", "a price group", "the acceptable
   ceiling" — not `raw_products`, `price_signature_id`, `group_max_acceptable_price`.
 - No file paths, no class names, no commit hashes, no SQL — **except in
@@ -201,8 +221,9 @@ paragraphs of problem, one user story, five or six criteria.
   separate cause.
 - Lead with the consequence, then the cause. Cut the investigation narrative
   entirely — how it was found does not belong in the record.
-- Give one exemplifying case, not four. The clearest one earns its place; the
-  rest are padding.
+- No worked examples. Not one, not the clearest one — none. A specific product,
+  group, or price used to illustrate the fault is investigation evidence, and a
+  reader who cannot look it up learns nothing from it.
 - One criterion per outcome. If two criteria are always true or false together,
   they are one criterion.
 - No section that restates another. If Notes repeats the problem statement, delete

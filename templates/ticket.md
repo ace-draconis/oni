@@ -6,8 +6,13 @@
 
 ## Objective
 [What the business cannot currently do, and what that costs. Written for someone
-with no access to the platform. Lead with the consequence, then the cause in one
-clause. No screens, no widgets, no class names, no "we changed X to Y".]
+with no access to the platform and no way to look anything up. Lead with the
+consequence, then the cause in one clause.
+
+State the principle, not the evidence: no screens or widgets, no class names, no
+"we changed X to Y", and no counts, named products, sampled cases or
+before-and-after measurements. A figure appears only where the figure is itself
+the objective — a target, a limit, a service level.]
 
 ## User Story
 As a [role], I need [capability] so that [outcome].
