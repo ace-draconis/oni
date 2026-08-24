@@ -4,23 +4,19 @@
 ## Status
 [Done — YYYY-MM-DD.  |  Open.  |  Open. Blocked on <what>.]
 
-## Objective
-[What the business cannot currently do, and what that costs. Written for someone
-with no access to the platform and no way to look anything up. Lead with the
-consequence, then the cause in one clause.
+## Problem Statement
+[Three or four sentences. What the business cannot do, and what it costs. Written
+for someone with no platform access and nothing to look up.
 
-State the principle, not the evidence: no screens or widgets, no class names, no
-"we changed X to Y", and no counts, named products, sampled cases or
-before-and-after measurements. A figure appears only where the figure is itself
-the objective — a target, a limit, a service level.]
+No screens, no code, no counts, no examples, no measurements. One idea per
+sentence. A figure only where the figure is the objective — a target or a limit.]
 
 ## User Story
 As a [role], I need [capability] so that [outcome].
 
-## Action Plan
-- [A capability or guarantee the business gains, observable without opening the
-  platform. Where the work adds data, say what the data enables.]
-- [Another. One per outcome.]
+## Acceptance Criteria
+- [One line. A capability the business gains. Five to eight of these.]
+- [Where the work adds data, say what the data lets someone do.]
 
 ## Changes
 | File | Change |

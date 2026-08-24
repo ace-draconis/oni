@@ -125,8 +125,7 @@ Use `templates/ticket.md`, unless the project's own tickets say otherwise.
   container image, which lives outside this repo.` The one thing a reader cannot
   reconstruct from anywhere else, and the reason a folder full of tickets is
   otherwise unsearchable for "what is outstanding".
-- **Objective** (`## Problem Statement` where a project already uses that
-  heading) — framed as what the business cannot
+- **Problem Statement** — framed as what the business cannot
   currently do and what that costs. Lead with the consequence to the business,
   then the cause in one clause. Never phrase the solution here, and never
   describe the screen or the code.
@@ -138,8 +137,7 @@ Use `templates/ticket.md`, unless the project's own tickets say otherwise.
 
 - **User Story** — who needs it and why. If there is no human beneficiary, say so
   plainly rather than inventing a fake role.
-- **Action Plan** (`## Acceptance Criteria` where a project already uses that
-  heading) — flat statements of the end state.
+- **Acceptance Criteria** — flat statements of the end state.
   Each one a capability or a guarantee the business gains, observable without
   opening the platform. Not checkboxes — a checkbox describes work in progress;
   a ticket outlives that.
@@ -214,23 +212,34 @@ where they sit next to the thing they describe.
 
 ## Keep it short
 
-A ticket nobody finishes reading records nothing. Aim for a screen — one to two
-paragraphs of problem, one user story, five or six criteria.
+Summary style. A manager should get it in under a minute.
 
-- One paragraph of problem statement. Two only if the second is a genuinely
-  separate cause.
-- Lead with the consequence, then the cause. Cut the investigation narrative
-  entirely — how it was found does not belong in the record.
-- No worked examples. Not one, not the clearest one — none. A specific product,
-  group, or price used to illustrate the fault is investigation evidence, and a
-  reader who cannot look it up learns nothing from it.
-- One criterion per outcome. If two criteria are always true or false together,
-  they are one criterion.
-- No section that restates another. If Notes repeats the problem statement, delete
-  it.
-- `## Changes` is exempt from the one-screen target. It is a working list, and an
-  incomplete one costs a commit message later — one line per file touched, however
-  many that is.
+**Hard limits:**
+- Problem Statement: **three or four sentences.** Not a paragraph that runs a
+  screen.
+- Each acceptance criterion: **one line, one sentence.** If it wraps past two
+  lines, it is doing two jobs.
+- Acceptance criteria: **five to eight.** More than that and the ticket is two.
+- Notes: **two sentences per point.** Delete the section if empty.
+
+**Write it tighter:**
+- One idea per sentence. Full stop, next sentence.
+- Cut every "so that", "which means", "because of this" that opens a second
+  clause explaining the first. State the fact; the reader connects it.
+- Cut hedges and intensifiers: quietly, genuinely, effectively, actually,
+  substantial, far, merely, exactly.
+- Cut the second example, the restatement, and the aside in dashes.
+- No sentence explaining why the previous sentence matters. If it needs
+  defending, it is the wrong sentence.
+
+Before: "Worse, the largest single category lumped together products merely
+waiting for better market data with products deliberately withheld because we do
+not trust our own figure for them. Those need opposite responses — one wants
+patience, the other wants someone to correct our data — and no report separated
+them."
+
+After: "Products awaiting market data were counted together with products we
+withheld deliberately. The two need opposite action."
 
 When a piece of work will not fit that shape, it is more than one ticket. Split it
 by who fixes what, not by how much was typed.
