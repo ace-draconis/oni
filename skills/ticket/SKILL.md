@@ -222,6 +222,10 @@ Summary style. A manager should get it in under a minute.
 - Acceptance criteria: **five to eight.** More than that and the ticket is two.
 - Notes: **two sentences per point.** Delete the section if empty.
 
+**No worked examples.** Not one, not the clearest one — none. A specific product,
+group, price or before-and-after figure used to illustrate a fault is diagnosis, and
+a reader who cannot look it up learns nothing from it.
+
 **Write it tighter:**
 - One idea per sentence. Full stop, next sentence.
 - Cut every "so that", "which means", "because of this" that opens a second
