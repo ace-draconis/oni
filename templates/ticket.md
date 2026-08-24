@@ -1,27 +1,27 @@
 ## Title
-[One line: what the work achieves, not how.]
+[A name for the work. One clause, under ~60 chars, verb first.]
 
 ## Status
-[Done — YYYY-MM-DD.  |  Open.  |  Open. Blocked on <what>, in <whose> hands.]
+[Done — YYYY-MM-DD.  |  Open.  |  Open. Blocked on <what>.]
 
-## Problem Statement
-[The pain, in plain business English — no file paths, no column names, no exact
-counts. Lead with the consequence, then the cause. One paragraph; a second only
-for a genuinely separate cause. One exemplifying case, not four.]
+## Objective
+[What the business cannot currently do, and what that costs. Written for someone
+with no access to the platform. Lead with the consequence, then the cause in one
+clause. No screens, no widgets, no class names, no "we changed X to Y".]
 
 ## User Story
 As a [role], I need [capability] so that [outcome].
 
-## Acceptance Criteria
-- [End state, observable, true when the work is done.]
-- [Another. One per outcome — merge any two that are always true together.]
+## Action Plan
+- [A capability or guarantee the business gains, observable without opening the
+  platform. Where the work adds data, say what the data enables.]
+- [Another. One per outcome.]
 
 ## Changes
 | File | Change |
 |---|---|
-| `path/to/file.php` | [What changed and why — written as the sentence you want in the commit body] |
+| `path/to/file.php` | [What changed and why — the sentence you want in the commit body. The only section that may name code.] |
 
 ## Notes
-[Only if there is something a reader would otherwise redo: an alternative measured
-and rejected, a non-obvious decision, an open question now answered. Delete this
-heading if there is nothing. Link ADRs as [[adr-slug]].]
+[Only if a reader would otherwise redo something: an alternative measured and
+rejected, a non-obvious decision, an open question now answered. Delete if empty.]

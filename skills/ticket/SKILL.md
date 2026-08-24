@@ -73,6 +73,40 @@ Match the project. Two patterns in use:
   shortened (`f3-fms` → `F3FMS`), next number = highest existing + 1. Use only
   where tickets need to be *cited* by id in conversation or commits.
 
+## Who reads this
+
+**Management, not engineers.** Most readers have no access to the platform and will
+never see the screens involved. They are approving work and tracking whether it
+paid off — they are reading Objectives and an Action Plan, written as if the work
+has not started.
+
+That rules out most of what is tempting to write:
+
+- **Never describe the interface.** No cards, widgets, tiles, columns, filters,
+  labels, positions, layouts, or what a screen looked like before. A reader who
+  cannot open the screen learns nothing from it, and a reader who can does not
+  need it.
+- **Never describe the code.** No classes, jobs, queries, migrations, or how it
+  works. That belongs in `## Changes` and in the commit.
+- **Never narrate the fault as a story about wrong naming, wrong display, or
+  inaccurate figures.** State what the business could not do as a result.
+- **Never say "we changed X to Y".** Say what becomes possible.
+
+Write instead about:
+
+- **What decision could not be made, or what work could not be assigned**, because
+  something was missing or untrustworthy.
+- **What data is missing and needs to exist** — and *why that data matters*. This is
+  usually the real content of the ticket. "Every unpriced product records which
+  fault caused it" is an objective; "the reason is now shown on the row" is not.
+- **Who is affected and what it costs them** — buyers, suppliers, category
+  managers, the platform.
+- **What becomes measurable.** A figure that was unknowable and is now reportable
+  is a result management cares about.
+
+The test: read the Problem Statement aloud to someone who has never opened the
+platform. If they cannot say what the business was losing, rewrite it.
+
 ## Filling it in
 
 Use `templates/ticket.md`, unless the project's own tickets say otherwise.
@@ -87,14 +121,32 @@ Use `templates/ticket.md`, unless the project's own tickets say otherwise.
   container image, which lives outside this repo.` The one thing a reader cannot
   reconstruct from anywhere else, and the reason a folder full of tickets is
   otherwise unsearchable for "what is outstanding".
-- **Problem Statement** — the pain, in the words it would be searched for later.
-  Never phrase the solution here.
+- **Objective** (`## Problem Statement` where a project already uses that
+  heading) — framed as what the business cannot
+  currently do and what that costs. Lead with the consequence to the business,
+  then the cause in one clause. Never phrase the solution here, and never
+  describe the screen or the code.
+
+  Before: "Two summary cards used the same words for different things, so their
+  figures could not be reconciled."
+  After: "We could not say how much of the catalogue we are unable to price, or
+  why — so the largest gaps could not be sized or assigned to anyone."
+
 - **User Story** — who needs it and why. If there is no human beneficiary, say so
   plainly rather than inventing a fake role.
-- **Acceptance Criteria** — the end state, as flat statements. Observable, and
-  true when the work is done: "A group whose members disagree on price publishes
-  no benchmark." Not checkboxes — a checkbox describes work in progress; a
-  ticket outlives that.
+- **Action Plan** (`## Acceptance Criteria` where a project already uses that
+  heading) — flat statements of the end state.
+  Each one a capability or a guarantee the business gains, observable without
+  opening the platform. Not checkboxes — a checkbox describes work in progress;
+  a ticket outlives that.
+
+  Before: "Every tile drills through to exactly the listings it counted."
+  After: "Every reported figure can be opened to the exact products behind it, so
+  a number can be challenged and checked."
+
+  Where the work adds data, say what the data enables, not that it is displayed:
+  "Each unpriced product carries the reason it cannot be priced, so the fault can
+  be routed to the team that owns it."
 - **Changes** — file path and, per file, what changed and why. Built from the
   commits that shipped the work, so it lists only files whose changes survived —
   not the ones touched while exploring, reverted, or reformatted by accident.
@@ -125,7 +177,8 @@ Write it so someone who has never read the schema understands it. This is what
 makes a ticket still readable in six months, when column names have moved.
 
 - Round and spell out numbers: "overstated by nearly forty thousand", not
-  "overstated by 37,908".
+  "overstated by 37,908". Prefer a proportion where it is what matters — "roughly
+  half the catalogue" lands where "ninety thousand listings" does not.
 - Name things as the business does: "a listing", "a price group", "the acceptable
   ceiling" — not `raw_products`, `price_signature_id`, `group_max_acceptable_price`.
 - No file paths, no class names, no commit hashes, no SQL — **except in
