@@ -36,6 +36,7 @@ no activation word — Oni is present in every session by default.
 | Skill | Fires on |
 |---|---|
 | `ticket` | Substantive work starting, completing, changing state |
+| `prd` | A feature/initiative proposed, needing sign-off before build |
 | `adr` | A decision between real alternatives |
 | `library` | Before solving something familiar; after solving something reusable |
 | `plan` | Multi-step work; "resume", "where were we" |
