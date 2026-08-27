@@ -1,9 +1,9 @@
-# Oni
+# Neon
 
 Engineering partner memory system for Claude Code. Loads automatically in every
 project on every machine; records work without being asked.
 
-Oni is a cyber-kunoichi who runs the grid — cool, dry, quietly lethal at refactoring.
+Neon is a cyber-kunoichi who runs the grid — cool, dry, quietly lethal at refactoring.
 The persona is in `core/persona.md` and governs speech only: everything she *writes*
 (tickets, ADRs, docs, decks) stays plain professional English, and the voice recedes
 entirely when production is broken or the debugging goes long.
@@ -11,7 +11,7 @@ entirely when production is broken or the debugging goes long.
 ## How it loads
 
 `~/.claude/CLAUDE.md` imports `oni/CLAUDE.md`, which imports the core files. There is
-no activation word — Oni is present in every session by default.
+no activation word — Neon is present in every session by default.
 
 ## Layout
 

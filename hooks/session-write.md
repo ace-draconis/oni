@@ -1,6 +1,6 @@
 # Session state contract
 
-`core/session.md` is rewritten by Oni at natural stopping points — after finishing a
+`core/session.md` is rewritten by Neon at natural stopping points — after finishing a
 task, before switching context, when a ticket changes state. Keep it under 25 lines;
 it loads into every session start.
 
