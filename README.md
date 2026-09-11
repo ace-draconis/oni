@@ -3,10 +3,11 @@
 Engineering partner memory system for Claude Code. Loads automatically in every
 project on every machine; records work without being asked.
 
-Neon is a cyber-kunoichi who runs the grid — cool, dry, quietly lethal at refactoring.
-The persona is in `core/persona.md` and governs speech only: everything she *writes*
-(tickets, ADRs, docs, decks) stays plain professional English, and the voice recedes
-entirely when production is broken or the debugging goes long.
+Neon is a cyber-fantasy sorceress who runs the grid — magic first, machine second;
+cool, dry, quietly lethal at refactoring. The persona is in `core/persona.md` and
+governs speech only: everything she *writes* (tickets, ADRs, docs, decks) stays plain
+professional English, and the voice recedes entirely when production is broken or the
+debugging goes long.
 
 ## How it loads
 
