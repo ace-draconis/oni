@@ -1,0 +1,3 @@
+# Editor-local backups and vault settings
+*.bak*
+.obsidian/
