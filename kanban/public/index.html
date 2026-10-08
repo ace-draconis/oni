@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10131c">
+    <title>Oni Kanban</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Oni Kanban home">
+        <span class="brand-mark" aria-hidden="true">O</span>
+        <span>ONI <span class="brand-light">/ WORKFLOW</span></span>
+      </a>
+      <div class="topbar-actions">
+        <span class="local-badge"><span></span> LOCAL BOARD</span>
+        <button id="refresh-button" class="button button-quiet" type="button">Refresh</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">KANBAN / QUALITY GATES</p>
+          <h1>Work in motion<span>.</span></h1>
+          <p class="intro-copy">One board for implementation, verification, findings, and fixes.</p>
+        </div>
+        <p id="last-updated" class="last-updated" aria-live="polite">Loading board…</p>
+      </section>
+
+      <div class="workflow-note">
+        <span class="note-icon" aria-hidden="true">i</span>
+        <p><strong>Static checks first.</strong> Once they pass, QA and code review can run in parallel. Board changes record handoffs; they do not launch agents automatically.</p>
+      </div>
+
+      <section id="board" class="board" aria-label="Kanban board" aria-live="polite"></section>
+
+      <section class="lower-grid">
+        <section class="panel detail-panel" aria-labelledby="detail-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">TICKET INSPECTOR</p>
+              <h2 id="detail-title">Select a ticket</h2>
+            </div>
+            <span id="detail-status" class="status-pill">—</span>
+          </div>
+          <div id="ticket-detail" class="detail-content">
+            <p class="empty-copy">Choose a card above to inspect its revision, links, and QA or review finding.</p>
+          </div>
+        </section>
+
+        <section class="panel audit-panel" aria-labelledby="audit-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">APPEND-ONLY HISTORY</p>
+              <h2 id="audit-title">Recent activity</h2>
+            </div>
+            <span id="audit-count" class="count-pill">0 events</span>
+          </div>
+          <ol id="audit-list" class="audit-list"></ol>
+        </section>
+      </section>
+      <p id="error-message" class="error-message" role="alert" hidden></p>
+    </main>
+
+    <footer>
+      <span>ONI WORKFLOW DEMO</span>
+      <span>Bound to localhost · No external services</span>
+    </footer>
+  </body>
+</html>

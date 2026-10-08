@@ -22,6 +22,8 @@ Claude Code runs the Oni session and persistence hooks. Copilot Agent Host loads
 the global instructions and skills, but does not run these lifecycle hooks. Other
 assistant harnesses need their own adapter; Copilot sessions must not claim that
 records were committed or pushed automatically.
+The installer also links Copilot agent profiles from `copilot/agents/` into
+`~/.copilot/agents/`, making them available across workspaces.
 
 ## Layout
 
@@ -30,6 +32,7 @@ records were committed or pushed automatically.
       persona.md           voice, register, hard limits
       principles.md        engineering non-negotiables
       stack.md             environment, tooling, Docker/git conventions
+    copilot/agents/        global coding orchestrator and verification agents
     projects/<name>.md     per-project context
     sessions/<name>.md     project-specific live working state
     plans/<slug>.md        resumable multi-step plans
@@ -41,6 +44,13 @@ records were committed or pushed automatically.
     skills/                auto-triggering capabilities
     hooks/                 lifecycle automation
     templates/             ticket, ADR, library item, project, plan, session
+
+## Workflow demo
+
+The local Kanban workflow and browser board live in [`kanban/`](./kanban/).
+Run `cd kanban && npm run web` to view the board at `http://127.0.0.1:4173`;
+the CLI, sample smoke test, audit trail, and lifecycle tests are documented in
+[`kanban/README.md`](./kanban/README.md).
 
 ## Skills
 

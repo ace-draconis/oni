@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "nextId": 3,
+  "tickets": [
+    {
+      "id": "K-0001",
+      "title": "Verify checkout tax calculation",
+      "status": "Changes Requested",
+      "assignee": "Neon",
+      "revision": "1",
+      "staticPass": null,
+      "approvals": {},
+      "links": [
+        "K-0002"
+      ],
+      "createdAt": "2026-10-08T06:54:34.524Z"
+    },
+    {
+      "id": "K-0002",
+      "title": "Fix: Verify checkout tax calculation",
+      "status": "Ready",
+      "assignee": "Neon",
+      "revision": "1",
+      "staticPass": null,
+      "approvals": {},
+      "links": [
+        "K-0001"
+      ],
+      "createdAt": "2026-10-08T06:55:09.544Z",
+      "sourceFinding": {
+        "id": "4dc011df-dc38-460e-ae37-596bfdc56a1c",
+        "ticketId": "K-0001",
+        "type": "qa",
+        "sourceFile": "checkout.js",
+        "sourceLine": "2",
+        "reproduction": "Run AUDIT_ACTOR=smoke-tester-agent npm test",
+        "actual": "Total: $12.00; outcome mismatch; exit status 1",
+        "expected": "Total: $11.00; outcome pass",
+        "why": "The checkout applies 20 percent tax instead of the expected 10 percent.",
+        "proposedFix": "Change taxPercent from 20 to 10 in checkout.js.",
+        "rationale": "A $10.00 subtotal with 10 percent tax totals $11.00; 20 percent produces $12.00."
+      }
+    }
+  ]
+}

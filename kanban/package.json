@@ -1,0 +1,13 @@
+{
+  "name": "disposable-checkout-audit-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node audit-runner.js",
+    "smoke": "node audit-runner.js",
+    "audit:handoff": "node audit-handoff.js",
+    "board": "node board.js",
+    "test:board": "node --test test/*.test.js",
+    "web": "node server.js"
+  }
+}

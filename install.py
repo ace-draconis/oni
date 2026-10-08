@@ -138,6 +138,9 @@ Before substantive work or answering questions about prior work, read
 relevant skills in `{oni_root / 'skills'}` and project notes in
 `{oni_root / 'projects'}`.
 
+For coding tasks, use the global `Neon Coder` agent as the implementer. It delegates
+code review, static checks, smoke testing, and QA to the installed specialist agents.
+
 Use the project-specific live state file `{oni_root}/sessions/<repository-name>.md`,
 where the repository name is the current workspace's Git root basename. Claude
 Code's session-start hook prints this path. If it does not exist, use
@@ -148,6 +151,7 @@ automatically committed or pushed; report the persistence state accurately.
 """
     merge_managed_block(home / ".copilot" / "copilot-instructions.md", instruction)
     install_skills(home / ".copilot" / "skills", oni_root / "skills")
+    install_agents(home / ".copilot" / "agents", oni_root / "copilot" / "agents")
 
 
 def install_skills(destination: Path, source: Path) -> None:
@@ -165,6 +169,19 @@ def install_skills(destination: Path, source: Path) -> None:
         link_path.symlink_to(skill_path, target_is_directory=True)
 
 
+def install_agents(destination: Path, source: Path) -> None:
+    destination.mkdir(parents=True, exist_ok=True)
+    for agent_path in sorted(source.glob("*.agent.md")):
+        link_path = destination / agent_path.name
+        if link_path.is_symlink() and link_path.resolve() == agent_path.resolve():
+            continue
+        if link_path.exists() or link_path.is_symlink():
+            raise ValueError(
+                f"Refusing to replace existing agent file that is not an Oni link: {link_path}"
+            )
+        link_path.symlink_to(agent_path)
+
+
 def main() -> int:
     oni_root = Path(__file__).resolve().parent
     home = Path.home()
@@ -178,7 +195,7 @@ def main() -> int:
     print(f"Installed Oni instructions and skills from {oni_root}")
     print(
         "Claude Code hooks are registered; Copilot Agent Host loads global "
-        "instructions and skills."
+        "instructions, skills, and agents."
     )
     return 0
 
