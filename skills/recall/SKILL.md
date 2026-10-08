@@ -15,7 +15,9 @@ Answer from the record, never from a plausible reconstruction.
 4. `projects/` — durable project context
 5. Project git log — `git log --grep='[PROJ]-'` ties commits to tickets
 
-    grep -ril "<terms>" /var/www/personal/oni/{tickets,library,projects}
+From the Oni repository root:
+
+    grep -ril "<terms>" tickets library projects sessions
 
 ## Answering
 

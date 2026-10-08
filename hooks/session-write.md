@@ -1,8 +1,8 @@
-# Session state contract
+# Project session state contract
 
-`core/session.md` is rewritten by Neon at natural stopping points — after finishing a
-task, before switching context, when a ticket changes state. Keep it under 25 lines;
-it loads into every session start.
+Write to the project-specific path printed by `session-start.sh`:
+`sessions/<project>.md`. Rewrite it at natural stopping points — after finishing a
+task, before switching context, when a ticket changes state. Keep it under 25 lines.
 
 Format:
 
@@ -18,5 +18,6 @@ Format:
     <the single next action>
 
 Rules: overwrite, never append — this is RAM, not a log. Durable history goes to
-tickets. If the next step is unknown, write "awaiting direction" rather than
-inventing one. A stale session file is worse than an empty one.
+tickets. Never store machine-specific checkout paths here. If the next step is
+unknown, write "awaiting direction" rather than inventing one. A stale session file
+is worse than an empty one.

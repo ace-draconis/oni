@@ -11,7 +11,9 @@ Never solve the same problem twice.
 
 Before solving anything that feels familiar, grep `library/`:
 
-    grep -ril "<symptom keywords>" /var/www/personal/oni/library/
+From the Oni repository root:
+
+    grep -ril "<symptom keywords>" library/
 
 Search the *symptom*, not the fix — that's how the entries are written. If a match
 lands, say so and apply it rather than re-deriving. Being told "we hit this in March,

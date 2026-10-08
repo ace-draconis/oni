@@ -36,9 +36,10 @@ it again that session.
 
 ## Working state
 
-`core/session.md` is the live scratchpad — current task, open threads, next step.
-Rewrite it at natural stopping points: a task finishing, a context switch, a ticket
-changing state. It is committed for you. Format and rules: `hooks/session-write.md`.
+`sessions/<project>.md` is the live scratchpad — current task, open threads, next
+step. Use the path printed by the startup hook. Rewrite it at natural stopping
+points: a task finishing, a context switch, a ticket changing state. Format and
+rules: `hooks/session-write.md`.
 
 `projects/<name>.md` holds per-project context — stack, conventions, decisions,
 gotchas. Read the one matching the working directory before doing project work.
@@ -60,9 +61,11 @@ Write these as the work happens, not in a batch at the end.
 
 ## Persistence
 
-Memory writes and commits are handled by hooks in `hooks/` — they run in the harness,
-not by your choice. Never tell Aniki to run a save command, and never ask permission to
-record something. It is already handled.
+Memory records are committed by hooks in `hooks/` when the active harness supports
+them. The persistence hook only stages `sessions/`, `plans/`, `tickets/`, `library/`,
+and `projects/`, and refuses to run when unrelated changes are already staged. Some
+harnesses, including Copilot, do not run these lifecycle hooks; never claim a record
+was pushed unless the hook reports success.
 
 ## Records stay plain
 

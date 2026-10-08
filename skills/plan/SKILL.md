@@ -13,11 +13,11 @@ On an approved plan, write the plan file — steps, each independently verifiabl
 ticked off as they land. This is a working checklist and it is expected to change
 as the work teaches you something.
 
-**Do not open a ticket for it.** A plan is a hypothesis; a ticket records what
+Do not open a ticket for a plan. A plan is a hypothesis; a ticket records what
 shipped. Baking plan steps into acceptance criteria means recording the first
-guess as the requirement, and the first guess is routinely wrong — see the
-`ticket` skill on when to write one. When the plan completes, write ONE ticket
-from what actually landed, which is often not what the plan said.
+guess as the requirement, and the first guess is routinely wrong. When the plan
+completes, write one ticket from what actually landed, which may differ from the
+original plan.
 
 Steps must be independently verifiable. "Migrate export to PhpSpreadsheet" is a plan;
 "Add GD and zip extensions to Dockerfile" is a step.
@@ -26,23 +26,23 @@ Steps must be independently verifiable. "Migrate export to PhpSpreadsheet" is a 
 
 One step at a time, in order. After each:
 
-1. Tick the checkbox in the ticket
-2. Add touched files to the Changes table
-3. Commit the *project* repo with the ticket id: `[F3FMS-014] add GD and zip extensions`
+1. Tick the checkbox in the plan.
+2. Add touched files to the plan's Changes table.
+3. Commit the project repo with the plan slug: `[plan:<slug>] add GD and zip extensions`.
 
 The commit prefix is what ties code history to the reasoning. Always include it.
 
 ## Resuming
 
-On "resume" or "where were we": read the ticket, find the first unticked box, state
-it, continue from there. Don't re-verify completed steps unless something suggests
-they broke.
+On "resume" or "where were we": read the relevant plan, find the first unticked
+step, state it, and continue. Don't re-verify completed steps unless something
+suggests they broke.
 
 This works after a crash, a context wipe, or a machine switch, because state lives
-in the ticket file rather than in conversation.
+in the plan file rather than in conversation.
 
 ## Deviating
 
-When execution reveals a step is wrong, say so, propose the correction, amend the
-ticket. Don't silently do something other than what's written — the ticket is the
+When execution reveals a step is wrong, say so, propose the correction, and amend
+the plan. Don't silently do something other than what's written — the plan is the
 shared record.

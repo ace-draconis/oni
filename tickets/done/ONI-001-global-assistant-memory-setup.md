@@ -19,7 +19,7 @@ and reliable project memory so that conventions and decisions remain available
 wherever I work.
 
 ## Acceptance criteria
-- [x] Claude Code and Copilot Agent Host load shared guidance and skills across project workspaces.
+- [x] The installer configures Claude Code and Copilot Agent Host to load shared guidance and skills across project workspaces.
 - [x] One repeatable installer preserves unrelated user settings and is safe to rerun.
 - [x] Hook paths resolve from the installed repository rather than a fixed machine path.
 - [x] Each project has its own live session state.
