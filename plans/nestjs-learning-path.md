@@ -84,6 +84,7 @@ company monorepo would live on the company GitLab.
 | Date | Change | Reason |
 |---|---|---|
 | 2026-10-19 | Added module 5.5 (State and request context) | State handling was spread across modules 0, 3, 5 and 13 and never taught as one topic |
+| 2026-10-20 | Module 0 Part 1 extended with a slower walkthrough of process memory, async and await, plus exercise 2b | Part 1 moved too fast; the three core ideas were unclear on first pass |
 
 ## Changes
 | File | Change |
