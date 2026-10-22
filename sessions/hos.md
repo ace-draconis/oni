@@ -6,4 +6,4 @@
 - Proposed gates not yet ticketed: boot/cache smoke, artisan+schedule snapshot, session cookie contract, JWT claim baseline, model serialization snapshot, Blade/mail render snapshots, queue payload compat, deprecation budget, Flysystem/Guzzle contracts, Ziggy parity, differential old-vs-new run, staging smoke.
 
 ## Next step
-Aniki picks the build order; then split into PS-10341 sub-tickets.
+On hold until the Laravel 9 upgrade lands on the branch (Aniki, 2026-10-22). Then re-plan against L9: the risk map above was measured on 5.8.
