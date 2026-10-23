@@ -1,9 +1,11 @@
 ## Project: hos
-**Task**: Regression automation plan for the Laravel 5.8 → 9 hops on `upgrade/laravel-13-sentinel` (planning only, nothing run)
+**Task**: Regression automation for `upgrade/laravel-13-sentinel`, now on Laravel 9.52.22 / PHP 8.2 (!4668 + !4685 sync, landed 2026-10-23). Planning only, nothing run.
 
 ## Open threads
-- P0 finding: Laravel's CookieValuePrefix (`sha1hmac(name.'v2')|` + value, security release ~6.18.29/7.22) is not stripped by e-invoice `libs/hos-session-auth` (TS) or the .NET HosSessionAuth. Web SSO into e-invoice breaks at the first hop that carries it. Needs a tolerant consumer fix shipped before the L6 hop.
-- Proposed gates not yet ticketed: boot/cache smoke, artisan+schedule snapshot, session cookie contract, JWT claim baseline, model serialization snapshot, Blade/mail render snapshots, queue payload compat, deprecation budget, Flysystem/Guzzle contracts, Ziggy parity, differential old-vs-new run, staging smoke.
+- Correction to the 2026-10-22 note: HOS says prod 5.5.50 already emits the cookie value prefix (tests/Unit/Config/SessionCookieValueContractTest.php). But e-invoice main's local hos-session-auth lib (TS) and LaravelCookieDecryptor.cs (.NET) do not strip `<40hex>|`. Contradiction unresolved; verify against a real prod cookie / e-invoice SSO logs.
+- Already gated on the L9 branch: model date pin + tripwire, Carbon JSON shape, cookie value contract, `acc` claim fixture, tenancy parity suite, queue tenant rebinding, import baseline, removed-API tripwire, route:cache test.
+- Still open: view/config cache smoke, artisan+schedule snapshot, mail render snapshots, Flysystem contract, outbound HTTP + Sentry boot, deprecation budget, Blade/visual diff, 5.8-vs-9 differential run, staging smoke, empty hop log, phpstan level 0.
+- Cleanups: BaseMailer dead Swift_TransportException catch; BaseReportManager Flysystem v3 error handling.
 
 ## Next step
-On hold until the Laravel 9 upgrade lands on the branch (Aniki, 2026-10-22). Then re-plan against L9: the risk map above was measured on 5.8.
+Aniki picks build order for the open gates; split into PS-10341 sub-tickets.
