@@ -7,5 +7,7 @@
 - Still open: view/config cache smoke, artisan+schedule snapshot, mail render snapshots, Flysystem contract, outbound HTTP + Sentry boot, deprecation budget, Blade/visual diff, 5.8-vs-9 differential run, staging smoke, empty hop log, phpstan level 0.
 - Cleanups: BaseMailer dead Swift_TransportException catch; BaseReportManager Flysystem v3 error handling.
 
+- 2026-10-23 consolidation triage: sentinel-temp tip 1e95f13c7c is already inside the upgrade branch (0 divergence). Of 25 open Sentinel branches: 11 already landed, 8 merge clean, 2 stale regardless of upgrade (PS-10260, PS-10338), 4 need L9 translation (PS-10730 UoM feature; test branches PS-10277, PS-10276, PS-10283). Release lines 2.38.0+3 / 2.37.0+2 fully in temp by ticket.
+
 ## Next step
-Aniki picks build order for the open gates; split into PS-10341 sub-tickets.
+Decide cutover timing (sentinel-temp → L9 base) and whether to add a CI trial-merge + removed-API scan on sentinel-temp MRs.
