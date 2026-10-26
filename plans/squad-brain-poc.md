@@ -39,13 +39,14 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] `403 not_provisioned` for unknown users (FR-04)
 - [x] Request dependency that resolves the caller per request (ADR-011) and sets `app.squad_id` / `app.user_id` / `app.cross_read`; audited cross-read helper
 
-### S4 — Bridge (`squad_client/bridge`)
-- [ ] PKCE loopback login, refresh token in keychain, file-locked refresh (ADR-005)
-- [ ] `squad context` CLI for hooks
-- [ ] stdio MCP proxy exposing the contract tools
+### S4 — Client auth script (ADR-012, replaces the bridge)
+- [x] Spike: Claude Code HTTP MCP with `headersHelper`; `ask` holds; 401 triggers helper re-run (ADR-012)
+- [ ] `squad_client/squad.py` (stdlib only): `login <email>`, `headers`, `context`; JWT cached in `.me/token.json` 0600
+- [ ] Tests for `squad.py` against the running brain
 
 ### S5 — MCP read side
 - [ ] `contracts/mcp_tools.json` frozen, contract test incl. no-transcript and 64 KB cap (FR-40, FR-44)
+- [ ] Brain `/mcp` streamable HTTP endpoint (MCP SDK in the container), Bearer JWT auth
 - [ ] `whoami`, `load_agent` (ETag), `list_work_items`, `get_work_item` behind `WorkTracker` (ADR-006)
 
 ### S6 — Share path
@@ -103,6 +104,7 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/app/api/{auth,dependencies}.py, app/cli/seed_demo.py | /auth/exchange, /me, demo seed |
 | squad_brain/tests/{test_auth_api,test_token_service,test_request_context}.py | 16 new tests |
 | squad_brain/docs/DECISIONS.md | ADR-011 |
+| squad_brain/spikes/adr-012/*, docs/DECISIONS.md | HTTP MCP spike; ADR-012 supersedes ADR-005 |
 
 ## Completion record
 —
