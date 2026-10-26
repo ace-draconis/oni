@@ -50,9 +50,10 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] `whoami`, `load_agent` (ETag), `list_work_items`, `get_work_item` behind `WorkTracker` (ADR-006)
 
 ### S6 — Share path
-- [ ] Consents endpoint and single-use 5-minute hash check (FR-22, AC-04)
-- [ ] `share_deliverable`, versions, audit, growth, embed job in one transaction (FR-23)
-- [ ] `update_status` with expected hints and `blocked_at` (FR-24); `withdraw` (FR-14, AC-09)
+- [x] Consents: REST two-step (POST /consents + X-Consent-Id, single-use, 5 min, payload hash); MCP records the ask-gated call as consent (ADR-013, AC-04)
+- [x] `share_deliverable`, versions, audit, growth, embed job in one transaction (FR-13, FR-21, FR-23)
+- [x] `update_status` with workflow, ownership rule, `blocked_at` and expected hints (FR-17, FR-24); `withdraw` (FR-14, AC-09); `list_my_shared` (PR-12)
+- [x] Live: headless Claude Code with `ask` refused and wrote nothing (AC-05); approved run shared ADR v1 and moved PAY-12
 
 ### S7 — Search and briefing
 - [ ] Worker: job queue (`SKIP LOCKED`), chunker (FR-15), embeddings
@@ -112,6 +113,12 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/docker/postgres/init_roles.sh, tests/conftest.py, tests/factories.py | Separate squad_brain_test DB; session-scoped MCP fixture |
 | squad_brain/tests/test_mcp_{contract,read_tools}.py | 44 tests incl. AC-08 contract |
 | squad_client/bin/squad.py | context includes agent |
+| squad_brain/app/services/{consent_service,audit_recorder,work_item_workflow}.py | Consent hashing/consume, audit rows, status machine |
+| squad_brain/app/actions/{share_deliverable,update_work_item_status,withdraw_deliverable,list_my_shared}_action.py | Write actions |
+| squad_brain/app/api/writes.py, app/mcp/tools.py | REST two-step consent endpoints; 4 MCP write/list tools |
+| squad_brain/app/db/session.py, app/mcp/endpoint.py | Explicit rollback on failure |
+| squad_brain/tests/test_share_path.py, tests/factories.py | 25 tests; factories commit (savepoint release) |
+| squad_brain/docs/DECISIONS.md | ADR-013 |
 
 ## Completion record
 —
