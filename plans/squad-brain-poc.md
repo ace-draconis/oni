@@ -41,8 +41,8 @@ A step is ticked only when its check has been run, not when the code is written.
 
 ### S4 — Client auth script (ADR-012, replaces the bridge)
 - [x] Spike: Claude Code HTTP MCP with `headersHelper`; `ask` holds; 401 triggers helper re-run (ADR-012)
-- [ ] `squad_client/squad.py` (stdlib only): `login <email>`, `headers`, `context`; JWT cached in `.me/token.json` 0600
-- [ ] Tests for `squad.py` against the running brain
+- [x] `squad_client/bin/squad.py` (stdlib, Python 3.9+): `login`, `status`, `headers`, `context`, `logout`; JWT cached in `.me/token.json` 0600
+- [x] Tests for `squad.py`: 12 unittest cases against a fake brain, plus live run against the real brain
 
 ### S5 — MCP read side
 - [ ] `contracts/mcp_tools.json` frozen, contract test incl. no-transcript and 64 KB cap (FR-40, FR-44)
@@ -105,6 +105,7 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/tests/{test_auth_api,test_token_service,test_request_context}.py | 16 new tests |
 | squad_brain/docs/DECISIONS.md | ADR-011 |
 | squad_brain/spikes/adr-012/*, docs/DECISIONS.md | HTTP MCP spike; ADR-012 supersedes ADR-005 |
+| squad_client/bin/squad.py, tests/test_squad_cli.py, README.md | Stdlib client: login, headersHelper, hook context |
 
 ## Completion record
 —
