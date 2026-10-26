@@ -28,11 +28,11 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] Alembic wired with `brain_owner` / `brain_app` roles
 
 ### S2 — Schema, RLS, authorization
-- [ ] Migrations for FSD §4 tables plus ADR-007 amendments
-- [ ] RLS policies on squad-scoped tables; `audit_log` append-only for `brain_app`
-- [ ] Seed deliverable types with field schemas (FSD §11)
-- [ ] `authorize()` with full 4-role matrix unit tests (FR-50)
-- [ ] Integration test: raw SQL as `brain_app` cannot read another squad (AC-03 DB half)
+- [x] Migrations for FSD §4 tables plus ADR-007 amendments
+- [x] RLS policies on squad-scoped tables; `audit_log` append-only for `brain_app`
+- [x] Seed deliverable types with field schemas (FSD §11)
+- [x] `authorize()` with full 4-role matrix unit tests (FR-50)
+- [x] Integration test: raw SQL as `brain_app` cannot read another squad (AC-03 DB half)
 
 ### S3 — Authentication
 - [ ] `POST /auth/exchange`: validate GitLab token, map user, issue 15-min JWT (FR-03); local dev login fallback (ADR-009)
@@ -94,6 +94,10 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/compose.yml, docker/*, .env.example | Stack: api, db, embedding |
 | squad_brain/tests/* | healthz, readyz, role and extension checks |
 | squad_brain/docs/DECISIONS.md | ADR-001 accepted, ADR-010 added |
+| squad_brain/migrations/versions/0002_core_schema.py | FSD §4 + ADR-007 tables, RLS policies, immutable versions, append-only audit |
+| squad_brain/migrations/versions/0003_seed_deliverable_types.py | Nine types with JSON Schemas and expected rules |
+| squad_brain/app/enums.py, app/authorization/policy.py | Enums and single authorize() decision point |
+| squad_brain/tests/{conftest,test_row_level_security,test_deliverable_types_seed,test_authorization_matrix}.py | 110 new tests |
 
 ## Completion record
 —
