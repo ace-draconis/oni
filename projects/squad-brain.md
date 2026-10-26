@@ -11,11 +11,14 @@
 - `squad_brain` — server (API + MCP), worker, web app (back-office + hub). Deployed as containers.
 - `squad_client` — client installed on member laptops. Structured like Oni (CLAUDE.md, core/, skills/, hooks/, installer).
 - Hosted on company GitLab (gitlab.silentmode.net); group not yet confirmed.
+- Client installs at user level like Oni (ADR-004); private data in `squad_client/.me/`.
+- Spec and ADRs: `squad_brain/docs/{PRD,FSD,DECISIONS}.md`. Plan: `plans/squad-brain-poc.md`.
 
 ## Decisions (2026-10-26)
 - Model: one shared memory (FSD design). Not a single always-on agent; the Hermes-style agent stays on the roadmap.
 - Work items: native in the POC behind a tracker interface; Jira and GitLab adapters later.
 - Server stack: FastAPI + PostgreSQL, as in the FSD.
+- Hostname: squad-brain.local.com (third-party public domain; replace before pilot TLS, ADR-008).
 
 ## Gotchas
 - GitLab rotates refresh tokens on use: hooks and the MCP bridge must share one token store with a lock.
