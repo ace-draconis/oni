@@ -69,7 +69,7 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] Client: skills synced from the brain at session start; `.me/` bootstrap; pre-commit blocks `.me/` (AC-07); hooks never block Claude Code
 - [x] Client: `install.py` (one-time, idempotent, uninstall, `--desktop`); `squad.py mcp-stdio` Desktop bridge
 - [x] Live: installer output reviewed in an isolated config; territory session announced + injected + recall with citations; personal repo silent and tools denied; Desktop bridge got persona via instructions with read tools only
-- [ ] Install into Aniki's real `~/.claude` (awaiting go-ahead and login identity)
+- [x] Installed into real `~/.claude` as rafiq.azhar@silentmode.my (TL, Squad Alpha); backup in squad_client/.me/backups/; Oni hooks and other settings preserved; MCP connected
 - [ ] Manual: interactive prompt for a share (ADR-001) and Claude Desktop restart check
 
 ### S9 — Web back-office
