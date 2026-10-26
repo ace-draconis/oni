@@ -2,7 +2,7 @@
 
 **Project**: squad-brain
 **Status**: In progress
-**Goal**: Pilot-ready POC meeting FSD §15 (AC-01..AC-14 green), built to FSD §14 order as amended by `squad_brain/docs/DECISIONS.md`.
+**Goal**: Local proof of concept on one machine (ADR-009): AC-01..AC-12 and AC-14 demonstrated, built to FSD §14 order as amended by `squad_brain/docs/DECISIONS.md`. Deployment, CI, backups, performance and pilot are out of scope.
 
 Repos: `squad_brain` (server, worker, web, deploy) and `squad_client` (Oni-style user-level client).
 Commit prefix: `[plan:squad-brain-poc]`, plus the `FR-xx` the commit implements.
@@ -13,7 +13,7 @@ A step is ticked only when its check has been run, not when the code is written.
 ### Setup
 - [x] Create local repos `squad_brain` and `squad_client` with initial commits
 - [x] Add PRD, FSD and DECISIONS.md (ADR-001..008) to `squad_brain/docs/`
-- [ ] Push both repos to company GitLab (group: unconfirmed)
+- [ ] Push both repos to GitLab group "Silentmode Squad Brain" (blocked: SSH publickey refused; group path assumed `silentmode-squad-brain`)
 
 ### S0 — Spike (ADR-001)
 - [ ] User-level `ask` rule vs user/project `allow` override: prompt appears or not
@@ -36,7 +36,7 @@ A step is ticked only when its check has been run, not when the code is written.
 - [ ] Integration test: raw SQL as `brain_app` cannot read another squad (AC-03 DB half)
 
 ### S3 — Authentication
-- [ ] `POST /auth/exchange`: validate GitLab token, map user, issue 15-min JWT (FR-03)
+- [ ] `POST /auth/exchange`: validate GitLab token, map user, issue 15-min JWT (FR-03); local dev login fallback (ADR-009)
 - [ ] `403 not_provisioned` for unknown users (FR-04)
 - [ ] Request dependency that sets `app.squad_id` / `app.cross_read` per transaction
 
@@ -64,7 +64,7 @@ A step is ticked only when its check has been run, not when the code is written.
 - [ ] Hooks: session_start, prompt_check (60 s cache), skill_guard, offline notice (FR-30..34, AC-11)
 - [ ] `.me/` bootstrap and pre-commit guard (FR-35, AC-07)
 - [ ] `CLAUDE.md` base rules and 11 skills (FR-80..84)
-- [ ] Tested install on macOS, Windows, Linux
+- [ ] Tested install on macOS
 
 ### S9 — Web back-office
 - [ ] React + TS + Vite app, GitLab OIDC login, role-gated routes (FR-66)
@@ -75,14 +75,12 @@ A step is ticked only when its check has been run, not when the code is written.
 - [ ] Squad library with version history
 - [ ] Squad progress from `v_squad_progress`, every metric linked (FR-70, FR-71)
 
-### S11 — Pilot hardening
-- [ ] Caddy TLS with final hostname (ADR-008), GitLab CI pipeline
-- [ ] Backup cron and restore drill log (NFR-05)
-- [ ] Performance check (AC-13) and AC sweep
-
-### S12 — Portfolio and go/no-go
+### S11 — Local wrap-up
+- [ ] Caddy with internal TLS for `squad-brain.local.com` via hosts file (ADR-008)
 - [ ] Portfolio view with single `cross_read` audit row (AC-10); growth view (FR-73)
-- [ ] Release criteria (PRD §12) reviewed
+- [ ] AC sweep (AC-01..AC-12, AC-14) and demo walkthrough in README
+
+Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS testing, pilot.
 
 ## Changes
 | File | Change |
