@@ -35,9 +35,9 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] Integration test: raw SQL as `brain_app` cannot read another squad (AC-03 DB half)
 
 ### S3 — Authentication
-- [ ] `POST /auth/exchange`: validate GitLab token, map user, issue 15-min JWT (FR-03); local dev login fallback (ADR-009)
-- [ ] `403 not_provisioned` for unknown users (FR-04)
-- [ ] Request dependency that sets `app.squad_id` / `app.cross_read` per transaction
+- [x] `POST /auth/exchange`: dev identity provider (email) behind `IdentityVerifier`, 15-min JWT (FR-03); GitLab verifier later (ADR-009)
+- [x] `403 not_provisioned` for unknown users (FR-04)
+- [x] Request dependency that resolves the caller per request (ADR-011) and sets `app.squad_id` / `app.user_id` / `app.cross_read`; audited cross-read helper
 
 ### S4 — Bridge (`squad_client/bridge`)
 - [ ] PKCE loopback login, refresh token in keychain, file-locked refresh (ADR-005)
@@ -98,6 +98,11 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/migrations/versions/0003_seed_deliverable_types.py | Nine types with JSON Schemas and expected rules |
 | squad_brain/app/enums.py, app/authorization/policy.py | Enums and single authorize() decision point |
 | squad_brain/tests/{conftest,test_row_level_security,test_deliverable_types_seed,test_authorization_matrix}.py | 110 new tests |
+| squad_brain/app/{exceptions.py,db/models.py,db/request_context.py} | Domain errors, ORM models, RLS context and audited cross-read |
+| squad_brain/app/services/{token_service,identity_verifier,principal_resolver}.py, app/actions/exchange_token_action.py | JWT, dev identity, per-request caller resolution |
+| squad_brain/app/api/{auth,dependencies}.py, app/cli/seed_demo.py | /auth/exchange, /me, demo seed |
+| squad_brain/tests/{test_auth_api,test_token_service,test_request_context}.py | 16 new tests |
+| squad_brain/docs/DECISIONS.md | ADR-011 |
 
 ## Completion record
 —
