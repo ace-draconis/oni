@@ -15,10 +15,10 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] Add PRD, FSD and DECISIONS.md (ADR-001..008) to `squad_brain/docs/`
 
 ### S0 — Spike (ADR-001)
-- [ ] User-level `ask` rule vs user/project `allow` override: prompt appears or not
-- [ ] Behaviour under `--dangerously-skip-permissions` and bypass mode
-- [ ] Remote MCP OAuth against GitLab CE as authorization server (FR-05)
-- [ ] Record findings in ADR-001
+- [x] User-level `ask` rule vs user/project `allow` override: prompt appears or not
+- [x] Behaviour under `--dangerously-skip-permissions` and bypass mode
+- [-] Remote MCP OAuth against GitLab CE (FR-05) — deferred, ADR-009
+- [x] Record findings in ADR-001
 
 ### S1 — Server skeleton
 - [ ] Python project (`pyproject.toml`, ruff, pytest) and app layout: `api/ actions/ services/ schemas/ db/ mcp/`
@@ -88,6 +88,7 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/docs/FSD.md | Added FSD v1.0 with amendment note |
 | squad_brain/docs/DECISIONS.md | ADR-001..008 |
 | squad_client/README.md, .gitignore | Initial commit |
+| squad_brain/spikes/adr-001/* | Dummy MCP server and scenario runner for ADR-001 |
 
 ## Completion record
 —
