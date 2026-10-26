@@ -61,12 +61,16 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] `briefing` incl. `handoffs_to_me` (AC-14); sessions with 30-min gap (FR-36); REST /me/briefing; squad.py context includes briefing
 - [x] Live: dev handoff -> worker embedded -> QA context listed handoff (AC-14) -> QA recall answered with citations (G2)
 
-### S8 — Client (`squad_client`)
-- [ ] `install.py`: managed `<!-- squad:begin -->` block, user-level hooks, skills, MCP, permissions (ADR-004)
-- [ ] Hooks: session_start, prompt_check (60 s cache), skill_guard, offline notice (FR-30..34, AC-11)
-- [ ] `.me/` bootstrap and pre-commit guard (FR-35, AC-07)
-- [ ] `CLAUDE.md` base rules and 11 skills (FR-80..84)
-- [ ] Tested install on macOS
+### S8 — Client (`squad_client`) — thin client, territory, every channel (ADR-014, ADR-015)
+- [x] Spikes: plugin route vs installer (plugin `ask` not enforced); PreToolUse deny on MCP tools; SessionStart systemMessage; MCP `instructions` reach the model; Skill tool input shape
+- [x] Brain: rendered agent instructions (persona, scope, base rules, skills) for hook and MCP handshake; brain-served skills (11) and client config (territory, min version)
+- [x] Brain: Desktop channel read-only by default (X-Squad-Channel)
+- [x] Client: territory (company git remote or path prefix), session-start announcement + injection, prompt-check (60 s, ETag, squad-move notice), tool guard (territory + allowlist, FR-34)
+- [x] Client: skills synced from the brain at session start; `.me/` bootstrap; pre-commit blocks `.me/` (AC-07); hooks never block Claude Code
+- [x] Client: `install.py` (one-time, idempotent, uninstall, `--desktop`); `squad.py mcp-stdio` Desktop bridge
+- [x] Live: installer output reviewed in an isolated config; territory session announced + injected + recall with citations; personal repo silent and tools denied; Desktop bridge got persona via instructions with read tools only
+- [ ] Install into Aniki's real `~/.claude` (awaiting go-ahead and login identity)
+- [ ] Manual: interactive prompt for a share (ADR-001) and Claude Desktop restart check
 
 ### S9 — Web back-office
 - [ ] React + TS + Vite app, GitLab OIDC login, role-gated routes (FR-66)
@@ -125,6 +129,12 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/app/mcp/tools.py, app/api/auth.py | recall/briefing tools; /me/briefing, /search; load_agent touches session |
 | squad_brain/tests/{test_chunker,test_search_and_briefing}.py, tests/conftest.py | 23 tests; memoized embeddings (160s -> 39s) |
 | squad_client/bin/squad.py | context includes briefing |
+| squad_brain/agent/base_rules.md, skills/*/SKILL.md, app/services/{agent_instructions,client_bundle}.py, app/api/client.py | Brain-served agent and skills, client config |
+| squad_brain/app/mcp/endpoint.py, app/config.py | Per-caller MCP instructions; Desktop read-only channel; territory settings |
+| squad_brain/tests/test_client_channel.py, spikes/plugin-route/ | 9 tests; plugin spike |
+| squad_client/bin/{squad,squad_hooks,squad_territory,squad_skills}.py, install.py, githooks/pre-commit | Thin client, hooks, installer, Desktop bridge |
+| squad_client/tests/{fake_brain,test_hooks_and_install}.py | 25 tests |
+| squad_brain/docs/DECISIONS.md | ADR-014, ADR-015 |
 
 ## Completion record
 —
