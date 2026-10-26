@@ -73,9 +73,10 @@ A step is ticked only when its check has been run, not when the code is written.
 - [ ] Manual: interactive prompt for a share (ADR-001) and Claude Desktop restart check
 
 ### S9 — Web back-office
-- [ ] React + TS + Vite app, GitLab OIDC login, role-gated routes (FR-66)
-- [ ] Agents (versioned, diff, change note), squads, users and move dialog (FR-60, FR-61, FR-18)
-- [ ] Deliverable types editor, skills catalog, audit viewer, usage (FR-62..65)
+- [x] Admin API, governance-only (FR-66), before/after audit (FR-65): agents + versions (FR-60), squads + assignment (FR-11), users + move with preview/handover/unassign in one tx (FR-18, FR-61), deliverable types, skills catalog (FR-62), audit + CSV, usage incl. recall counter (FR-64, migration 0004)
+- [x] React + TS + Vite web app in a container (no local Node): dev login, role-gated nav, all back-office pages
+- [x] UI driven with Playwright in Docker: every page, agent v2 via review diff, move dialog; caught and fixed a sign-in re-render bug
+- [x] AC-06 live: UI move -> Dina's session start = Beta Agent v2, Alpha items unreadable; move back -> next prompt "Squad changed"
 
 ### S10 — Hub
 - [ ] Squad library with version history
@@ -135,6 +136,10 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_client/bin/{squad,squad_hooks,squad_territory,squad_skills}.py, install.py, githooks/pre-commit | Thin client, hooks, installer, Desktop bridge |
 | squad_client/tests/{fake_brain,test_hooks_and_install}.py | 25 tests |
 | squad_brain/docs/DECISIONS.md | ADR-014, ADR-015 |
+| squad_brain/app/api/admin.py, app/actions/admin/*, app/services/{admin_queries,admin_audit,usage_counter}.py, app/schemas/admin.py | Back-office API |
+| squad_brain/migrations/versions/0004_usage_daily.py | Recall usage counter |
+| squad_brain/tests/test_admin_api.py | 17 tests incl. FR-18 move + AC-06 server half |
+| squad_brain/web/* | Back-office web app + Playwright smoke script |
 
 ## Completion record
 —
