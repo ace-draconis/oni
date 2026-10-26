@@ -10,7 +10,7 @@
 ## Repositories
 - `squad_brain` — server (API + MCP), worker, web app (back-office + hub). Deployed as containers.
 - `squad_client` — client installed on member laptops. Structured like Oni (CLAUDE.md, core/, skills/, hooks/, installer).
-- Hosted on company GitLab (gitlab.silentmode.net); group not yet confirmed.
+- Local only. No remotes; do not push or suggest pushing until Aniki asks.
 - Client installs at user level like Oni (ADR-004); private data in `squad_client/.me/`.
 - Spec and ADRs: `squad_brain/docs/{PRD,FSD,DECISIONS}.md`. Plan: `plans/squad-brain-poc.md`.
 

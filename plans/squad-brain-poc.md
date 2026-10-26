@@ -13,7 +13,6 @@ A step is ticked only when its check has been run, not when the code is written.
 ### Setup
 - [x] Create local repos `squad_brain` and `squad_client` with initial commits
 - [x] Add PRD, FSD and DECISIONS.md (ADR-001..008) to `squad_brain/docs/`
-- [ ] Push both repos to GitLab group "Silentmode Squad Brain" (blocked: SSH publickey refused; group path assumed `silentmode-squad-brain`)
 
 ### S0 — Spike (ADR-001)
 - [ ] User-level `ask` rule vs user/project `allow` override: prompt appears or not

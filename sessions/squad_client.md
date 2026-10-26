@@ -4,7 +4,6 @@
 **Task**: Squad Brain POC — repos, spec and ADRs set up; build not started
 
 ## Open threads
-- GitLab push blocked: SSH publickey refused on gitlab.silentmode.net; group "Silentmode Squad Brain", path assumed silentmode-squad-brain
 - Local POC only (ADR-009); ADR-001 spike pending
 
 ## Next step
