@@ -21,11 +21,11 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] Record findings in ADR-001
 
 ### S1 — Server skeleton
-- [ ] Python project (`pyproject.toml`, ruff, pytest) and app layout: `api/ actions/ services/ schemas/ db/ mcp/`
-- [ ] Settings from env (FSD §12 config) with `.env.example`
-- [ ] `/healthz` and `/readyz` (DB + TEI reachability) with tests
-- [ ] Docker Compose: api, postgres 16 + pgvector (no host port), TEI bge-m3; `docker compose up` passes `/readyz`
-- [ ] Alembic wired with `brain_owner` / `brain_app` roles
+- [x] Python project (`pyproject.toml`, ruff, pytest) and app layout `api/ services/ db/`; `actions/ schemas/ mcp/` added when first used
+- [x] Settings from env (FSD §12 config) with `.env.example`
+- [x] `/healthz` and `/readyz` (database + embedding model) with tests
+- [x] Docker Compose: api (127.0.0.1:8100), postgres 16 + pgvector (no host port), Ollama bge-m3 (ADR-010); `/readyz` 200
+- [x] Alembic wired with `brain_owner` / `brain_app` roles
 
 ### S2 — Schema, RLS, authorization
 - [ ] Migrations for FSD §4 tables plus ADR-007 amendments
@@ -89,6 +89,11 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/docs/DECISIONS.md | ADR-001..008 |
 | squad_client/README.md, .gitignore | Initial commit |
 | squad_brain/spikes/adr-001/* | Dummy MCP server and scenario runner for ADR-001 |
+| squad_brain/pyproject.toml, app/{main,config}.py, app/api/health.py, app/services/{embedding_client,readiness_service}.py, app/db/session.py | Server skeleton |
+| squad_brain/alembic.ini, migrations/ | Alembic as brain_owner; 0001 grants brain_app |
+| squad_brain/compose.yml, docker/*, .env.example | Stack: api, db, embedding |
+| squad_brain/tests/* | healthz, readyz, role and extension checks |
+| squad_brain/docs/DECISIONS.md | ADR-001 accepted, ADR-010 added |
 
 ## Completion record
 —
