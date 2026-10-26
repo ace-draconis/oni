@@ -56,9 +56,10 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] Live: headless Claude Code with `ask` refused and wrote nothing (AC-05); approved run shared ADR v1 and moved PAY-12
 
 ### S7 — Search and briefing
-- [ ] Worker: job queue (`SKIP LOCKED`), chunker (FR-15), embeddings
-- [ ] Hybrid `recall` with citations and 8k cap (FR-41, FR-42)
-- [ ] `briefing` incl. `handoffs_to_me` (AC-14); sessions upsert (FR-36)
+- [x] Worker container: jobs queue (`SKIP LOCKED`, DB-clock retries, failed after 5), chunker (FR-15), Ollama embeddings
+- [x] Hybrid `recall` (vector + FTS candidates, 0.7/0.3 rerank) with citations and 8k cap (FR-41, FR-42); REST /search with 60/min limit (FR-53)
+- [x] `briefing` incl. `handoffs_to_me` (AC-14); sessions with 30-min gap (FR-36); REST /me/briefing; squad.py context includes briefing
+- [x] Live: dev handoff -> worker embedded -> QA context listed handoff (AC-14) -> QA recall answered with citations (G2)
 
 ### S8 — Client (`squad_client`)
 - [ ] `install.py`: managed `<!-- squad:begin -->` block, user-level hooks, skills, MCP, permissions (ADR-004)
@@ -119,6 +120,11 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/app/db/session.py, app/mcp/endpoint.py | Explicit rollback on failure |
 | squad_brain/tests/test_share_path.py, tests/factories.py | 25 tests; factories commit (savepoint release) |
 | squad_brain/docs/DECISIONS.md | ADR-013 |
+| squad_brain/app/worker/{__main__,job_runner,embed_job}.py, app/services/chunker.py, compose.yml | Worker container, job queue, embedding |
+| squad_brain/app/actions/{recall,briefing}_action.py, app/services/{session_tracker,token_budget,rate_limiter}.py | Recall, briefing, sessions, 8k cap, rate limit |
+| squad_brain/app/mcp/tools.py, app/api/auth.py | recall/briefing tools; /me/briefing, /search; load_agent touches session |
+| squad_brain/tests/{test_chunker,test_search_and_briefing}.py, tests/conftest.py | 23 tests; memoized embeddings (160s -> 39s) |
+| squad_client/bin/squad.py | context includes briefing |
 
 ## Completion record
 —

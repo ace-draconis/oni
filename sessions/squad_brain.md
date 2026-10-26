@@ -1,14 +1,14 @@
 # Session state
 **Updated**: 2026-10-26
 **Project**: squad-brain
-**Task**: Squad Brain local POC — S0–S6 done; S7 (worker, recall, briefing) next
+**Task**: Squad Brain local POC — S0–S7 done (all 10 MCP tools served); S8 (client) next
 
 ## Open threads
-- Stack: `docker compose up -d` in squad_brain; API 127.0.0.1:8100 (/mcp, /docs), Adminer 127.0.0.1:8180 (brain_owner)
-- Demo seed: `docker compose exec api python -m app.cli.seed_demo`; login with any @squad.test email via squad_client/bin/squad.py
-- Tests use squad_brain_test DB; PENDING_TOOLS = {briefing, recall} in tests/test_mcp_contract.py; empty after S7
+- Stack: `docker compose up -d` in squad_brain (api 8100, worker, db, embedding, Adminer 8180)
+- Demo seed + login: `python -m app.cli.seed_demo`; squad_client/bin/squad.py login <x>@squad.test
+- Dev DB holds live-run data: ADR + handoff on PAY-12 (now qa)
 - ADR-001 interactive prompt check still manual
 - No local installs (memory: minimize-local-installs)
 
 ## Next step
-S7: worker (jobs SKIP LOCKED, chunker FR-15, embeddings), hybrid recall with citations + 8k cap, briefing incl. handoffs_to_me, sessions upsert (FR-36). Dev DB has 1 queued embed job from the S6 live run.
+S8: squad_client install.py (managed block, user-level hooks/skills/MCP/permissions), hooks (session_start, prompt_check, skill_guard, offline), .me bootstrap + pre-commit, CLAUDE.md rules + 11 skills
