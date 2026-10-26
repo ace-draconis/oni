@@ -45,9 +45,9 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] Tests for `squad.py`: 12 unittest cases against a fake brain, plus live run against the real brain
 
 ### S5 — MCP read side
-- [ ] `contracts/mcp_tools.json` frozen, contract test incl. no-transcript and 64 KB cap (FR-40, FR-44)
-- [ ] Brain `/mcp` streamable HTTP endpoint (MCP SDK in the container), Bearer JWT auth
-- [ ] `whoami`, `load_agent` (ETag), `list_work_items`, `get_work_item` behind `WorkTracker` (ADR-006)
+- [x] `contracts/mcp_tools.json` frozen, contract test incl. no-transcript and 64 KB cap (FR-40, FR-44)
+- [x] Brain `/mcp` streamable HTTP endpoint (MCP SDK in the container), Bearer JWT auth
+- [x] `whoami`, `load_agent` (ETag), `list_work_items`, `get_work_item` behind `WorkTracker` (ADR-006)
 
 ### S6 — Share path
 - [ ] Consents endpoint and single-use 5-minute hash check (FR-22, AC-04)
@@ -106,6 +106,12 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/docs/DECISIONS.md | ADR-011 |
 | squad_brain/spikes/adr-012/*, docs/DECISIONS.md | HTTP MCP spike; ADR-012 supersedes ADR-005 |
 | squad_client/bin/squad.py, tests/test_squad_cli.py, README.md | Stdlib client: login, headersHelper, hook context |
+| squad_brain/contracts/mcp_tools.json, app/mcp/{contract,endpoint,tools}.py | Frozen 10-tool contract; /mcp streamable HTTP with bearer gate; 4 read tools |
+| squad_brain/app/actions/load_agent_action.py, app/services/work_tracker.py, app/schemas/{agent,work_item}.py | Agent resolution (follow_latest, ETag); WorkTracker + NativeWorkTracker |
+| squad_brain/app/api/auth.py | GET /api/v1/me/agent with ETag/304 |
+| squad_brain/docker/postgres/init_roles.sh, tests/conftest.py, tests/factories.py | Separate squad_brain_test DB; session-scoped MCP fixture |
+| squad_brain/tests/test_mcp_{contract,read_tools}.py | 44 tests incl. AC-08 contract |
+| squad_client/bin/squad.py | context includes agent |
 
 ## Completion record
 —
