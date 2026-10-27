@@ -84,9 +84,9 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] Live: Playwright as TL Alpha (qa 2 -> 2 rows, blocker PAY-15 22h, library -> ADR v1) and governance -> Beta progress
 
 ### S11 — Local wrap-up
-- [ ] Caddy with internal TLS for `squad-brain.local.com` via hosts file (ADR-008)
-- [ ] Portfolio view with single `cross_read` audit row (AC-10); growth view (FR-73)
-- [ ] AC sweep (AC-01..AC-12, AC-14) and demo walkthrough in README
+- [x] Caddy with internal TLS for `squad-brain.local.com` (proxy container, network alias); verified with the exported root CA. Hosts entry and keychain trust are a manual sudo step (README)
+- [x] Portfolio from `v_portfolio` + `v_shared_blockers`, one `cross_read` row per view (live 0 -> 1, AC-10); growth from `v_growth` / `v_growth_records`, person/pm/tl only (FR-73)
+- [x] AC sweep (AC-01..AC-12, AC-14) in README with evidence; live AC-02, AC-07, AC-10, AC-11, AC-12. AC-11 found a client defect (double import of squad.py, notices dropped), fixed in squad_client 9795763
 
 Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS testing, pilot.
 
@@ -145,6 +145,14 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/app/api/hub.py, app/services/{hub_queries,squad_read_access}.py, app/schemas/hub.py | Library, deliverable versions, progress, drill-down work items; audited cross-read |
 | squad_brain/tests/test_hub_api.py, tests/test_database_roles.py | 10 tests incl. metric = drill-down and view RLS; head 0005 |
 | squad_brain/web/src/pages/{Progress,WorkItems,Library,Deliverable}Page.tsx, components/Metric.tsx, e2e/hub.mjs | Hub pages for every role; NoAccessPage removed |
+| squad_brain/migrations/versions/0006_portfolio_growth_views.py | v_shared_blockers, v_portfolio, v_growth_records, v_growth |
+| squad_brain/app/services/{hub_read_access,portfolio_queries,growth_queries}.py, app/api/hub.py | Portfolio, growth, members; access gates renamed HubReadAccess |
+| squad_brain/tests/test_portfolio_growth_api.py | 14 tests |
+| squad_brain/web/src/pages/{Portfolio,Growth,GrowthRecords}Page.tsx | Portfolio and growth pages |
+| squad_brain/docker/caddy/Caddyfile, compose.yml | proxy service, internal TLS |
+| squad_brain/app/cli/seed_demo.py | ONB-4 and the PAY-15 -> ONB-4 shared blocker |
+| squad_brain/README.md | HTTPS setup, hub, demo walkthrough, AC sweep |
+| squad_client/bin/squad.py, tests/test_hooks_and_install.py | Module alias fix; installed-command offline test |
 
 ## Completion record
 —
