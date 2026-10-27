@@ -79,8 +79,9 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] AC-06 live: UI move -> Dina's session start = Beta Agent v2, Alpha items unreadable; move back -> next prompt "Squad changed"
 
 ### S10 — Hub
-- [ ] Squad library with version history
-- [ ] Squad progress from `v_squad_progress`, every metric linked (FR-70, FR-71)
+- [x] Squad library: REST list (type, text, work item, author, open-bug severity filters; cursor pages), deliverable page at the citation URL with version history; withdrawn gone (AC-09); cross-squad links audited
+- [x] Squad progress from `v_squad_progress` over `v_open_bugs` and `v_item_test_coverage` (security_invoker), every metric linked to the list built from the same view (FR-70, FR-71)
+- [x] Live: Playwright as TL Alpha (qa 2 -> 2 rows, blocker PAY-15 22h, library -> ADR v1) and governance -> Beta progress
 
 ### S11 — Local wrap-up
 - [ ] Caddy with internal TLS for `squad-brain.local.com` via hosts file (ADR-008)
@@ -140,6 +141,10 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_brain/migrations/versions/0004_usage_daily.py | Recall usage counter |
 | squad_brain/tests/test_admin_api.py | 17 tests incl. FR-18 move + AC-06 server half |
 | squad_brain/web/* | Back-office web app + Playwright smoke script |
+| squad_brain/migrations/versions/0005_hub_views.py | v_open_bugs, v_item_test_coverage, v_squad_progress (security_invoker) |
+| squad_brain/app/api/hub.py, app/services/{hub_queries,squad_read_access}.py, app/schemas/hub.py | Library, deliverable versions, progress, drill-down work items; audited cross-read |
+| squad_brain/tests/test_hub_api.py, tests/test_database_roles.py | 10 tests incl. metric = drill-down and view RLS; head 0005 |
+| squad_brain/web/src/pages/{Progress,WorkItems,Library,Deliverable}Page.tsx, components/Metric.tsx, e2e/hub.mjs | Hub pages for every role; NoAccessPage removed |
 
 ## Completion record
 —
