@@ -1,7 +1,7 @@
 # Squad Brain POC
 
 **Project**: squad-brain
-**Status**: In progress
+**Status**: Complete
 **Goal**: Local proof of concept on one machine (ADR-009): AC-01..AC-12 and AC-14 demonstrated, built to FSD §14 order as amended by `squad_brain/docs/DECISIONS.md`. Deployment, CI, backups, performance and pilot are out of scope.
 
 Repos: `squad_brain` (server, worker, web, deploy) and `squad_client` (Oni-style user-level client).
@@ -70,7 +70,7 @@ A step is ticked only when its check has been run, not when the code is written.
 - [x] Client: `install.py` (one-time, idempotent, uninstall, `--desktop`); `squad.py mcp-stdio` Desktop bridge
 - [x] Live: installer output reviewed in an isolated config; territory session announced + injected + recall with citations; personal repo silent and tools denied; Desktop bridge got persona via instructions with read tools only
 - [x] Installed into real `~/.claude` as rafiq.azhar@silentmode.my (TL, Squad Alpha); backup in squad_client/.me/backups/; Oni hooks and other settings preserved; MCP connected
-- [ ] Manual: interactive prompt for a share (ADR-001) and Claude Desktop restart check
+- [x] Manual (2026-10-27): interactive share in a territory session (auto mode on) stopped at the `ask` prompt, approved, shared v1, then withdrawn; Claude Desktop restarted after `install.py --desktop`: bridge connected, Alpha Agent v1 instructions, 7 read tools only
 
 ### S9 — Web back-office
 - [x] Admin API, governance-only (FR-66), before/after audit (FR-65): agents + versions (FR-60), squads + assignment (FR-11), users + move with preview/handover/unassign in one tx (FR-18, FR-61), deliverable types, skills catalog (FR-62), audit + CSV, usage incl. recall counter (FR-64, migration 0004)
@@ -155,4 +155,21 @@ Deferred (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS tes
 | squad_client/bin/squad.py, tests/test_hooks_and_install.py | Module alias fix; installed-command offline test |
 
 ## Completion record
-—
+**Completed**: 2026-10-27
+
+Local proof of concept delivered per ADR-009: S0–S11 built and verified. AC-01..AC-12 and
+AC-14 pass (README acceptance table in `squad_brain`); AC-13 deferred with deployment.
+273 server tests and 38 client tests pass; UI smoke tests run through Caddy over HTTPS.
+
+Deviations from the FSD, all recorded in `squad_brain/docs/DECISIONS.md`: dev identity
+provider instead of GitLab OAuth (ADR-009), direct HTTP MCP instead of a local bridge
+(ADR-012), thin client with brain-served agent and skills (ADR-014), read-only Desktop
+channel (ADR-015).
+
+Defect found during the AC sweep: `bin/squad.py` loaded twice when run as a script, so
+offline and refused notices were dropped (fixed, squad_client 9795763; library entry
+`python-script-main-double-import`).
+
+Remaining manual step for the operator: hosts entry and trust of the Caddy root CA (sudo).
+Out of scope (ADR-009): VM deploy, CI, backup drill, AC-13 performance, multi-OS testing,
+pilot.
